@@ -2,10 +2,10 @@
   "name": "serial-loom-controller",
   "version": "1.0.0",
   "description": "Node.js server to send gcodes via serial port to control 3d printer hardware",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "node example.js"
   },
   "repository": {
     "type": "git",
