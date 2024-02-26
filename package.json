@@ -1,0 +1,24 @@
+{
+  "name": "serial-loom-controller",
+  "version": "1.0.0",
+  "description": "Node.js server to send gcodes via serial port to control 3d printer hardware",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdelfino/serial-loom-controller.git"
+  },
+  "author": "Joe Delfino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdelfino/serial-loom-controller/issues"
+  },
+  "homepage": "https://github.com/jdelfino/serial-loom-controller#readme",
+  "dependencies": {
+    "repl": "^0.1.3",
+    "serialport": "^12.0.0"
+  }
+}
