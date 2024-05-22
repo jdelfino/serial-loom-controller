@@ -30,8 +30,12 @@ class LoomDriver {
             console.log("Invalid heddle number: " + num + ", skipping.");
             return
         }
-        await this.serial.send('G1 X' + (20 + (num * 10)));
+        await this.serial.send('G1 X' + (12 + (num * 10)));
         await this.serial.send('M400');
+    }
+
+    async home() {
+        await this.serial.send('G28');
     }
 }
 

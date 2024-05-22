@@ -12,4 +12,10 @@ var driver = require('./LoomDriver.js');
         await l.move_to_heddle(i);
         await l.strike();
     }
+    /*
+    for (var i = 0; i < 200; i++) {
+        await l.move_to_heddle(10);
+        await l.move_to_heddle(7);
+    }
+    */
 })()

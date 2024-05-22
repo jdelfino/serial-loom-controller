@@ -18,7 +18,13 @@
   },
   "homepage": "https://github.com/jdelfino/serial-loom-controller#readme",
   "dependencies": {
+    "express": "^4.19.2",
     "repl": "^0.1.3",
     "serialport": "^12.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5"
   }
 }
