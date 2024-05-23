@@ -1,0 +1,14 @@
+[Unit]
+Description=Raspberry Loom Controller
+After=network-online.target
+
+[Service]
+ExecStart=/home/loom/serial-loom-controller/server/start.sh
+WorkingDirectory=/home/loom/serial-loom-controller/server
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=loom
+
+[Install]
+WantedBy=multi-user.target
