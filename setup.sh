@@ -6,6 +6,8 @@ sudo swapon /swapfile
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
+sudo adduser loom dialout
+
 # install nvm / node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 nvm install --lts
@@ -15,5 +17,4 @@ nvm install --lts
 cp -r loomapp/node_modules_raspbian loomapp/node_modules
 cp -r server/node_modules_raspbian loomapp/node_modules
 
-echo "Run this command: source ~/.bashrc"
-
+echo "You must log out and log back in for all changes to take effect"
