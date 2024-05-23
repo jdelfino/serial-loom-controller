@@ -7,7 +7,7 @@ const port = 3000
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../loomapp/build')));
+app.use(express.static(path.join(__dirname, './public')));
 
 const driver = new LoomDriver.LoomDriver('/dev/ttyACM0');
 
