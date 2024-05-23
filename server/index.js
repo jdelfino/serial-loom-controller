@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../loomapp/build')));
 
-const driver = new LoomDriver.LoomDriver('/dev/cu.usbmodem11201');
+const driver = new LoomDriver.LoomDriver('/dev/ttyACM0');
 
 (async () => await driver.open())();
 console.log("Connected to loom");
