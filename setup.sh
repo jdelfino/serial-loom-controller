@@ -9,11 +9,6 @@ if [ ! -f /swapfile ]; then
     echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 fi
 
-# set up the loom server as a service, so it starts whenever the pi boots up
-sudo cp /home/loom/serial-loom-controller/loom.service /lib/systemd/system/
-sudo systemctl start loom.service
-sudo systemctl enable loom.service
-
 # install nvm / node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
