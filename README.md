@@ -21,6 +21,7 @@ It is intended to run on Raspberry Pi Zero 2 W.
 7. `git clone https://github.com/jdelfino/serial-loom-controller.git`
 8. `cd serial-loom-controller`
 9. `./setup.sh`
+10. Log out (ctrl-D), then SSH again (`ssh loom@loom.local`)
 10. `cd server`
 11. `nohup node index.js &`
 
