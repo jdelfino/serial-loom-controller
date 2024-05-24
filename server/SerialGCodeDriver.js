@@ -16,7 +16,16 @@ class SerialGCodeDriver {
         return new Promise((resolve, reject) => {
             this.port = new SerialPort({
                 baudRate: this.baud_rate,
-                path: this.port_name
+                path: this.port_name,
+                autoOpen: false
+            });
+            
+            this.port.open((err) => {
+                if (err) {
+                    console.log("error: ", err);
+                    return;
+                }
+                console.log("open successful?");
             });
 
             this.port.on('open', () => {
