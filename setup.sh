@@ -25,4 +25,4 @@ sudo cp /home/loom/serial-loom-controller/loom.service /lib/systemd/system/
 sudo systemctl daemon-reload
 
 sudo cp /home/loom/serial-loom-controller/99-serial-port.rules /etc/udev/rules.d/
-sudo udevadm control --reload-rules && sudo udevadm trigger /dev/ttyACM0
+sudo udevadm control --reload-rules && sudo udevadm trigger

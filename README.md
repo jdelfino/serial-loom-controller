@@ -26,9 +26,7 @@ It is intended to run on Raspberry Pi Zero 2 W.
 1. `git clone https://github.com/jdelfino/serial-loom-controller.git`
 1. `cd serial-loom-controller`
 1. `./setup.sh`
-   * This will take a few minutes, be patient
-1. Log out (ctrl-D), then SSH again (`ssh loom@loom.local`)
-1. `cd server`
-1. `nohup node index.js &`
 
-After that, you are free to disconnect. You should be able to load the frontend by visiting loom.local:3000 in a browser.
+After this, when you plug the Raspberry Pi into the Arduino, the loom motor should home itself.
+
+You should be able to load the frontend by visiting loom.local:3000 in a browser.
