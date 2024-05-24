@@ -20,14 +20,6 @@ class SerialGCodeDriver {
                 autoOpen: false
             });
             
-            this.port.open((err) => {
-                if (err) {
-                    console.log("error: ", err);
-                    return;
-                }
-                console.log("open successful?");
-            });
-
             this.port.on('open', () => {
                 var gc = this;
                 var response_parser = this.port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
@@ -53,6 +45,16 @@ class SerialGCodeDriver {
                     process.exit(0);
                 }); 
             });
+
+            this.port.open((err) => {
+                if (err) {
+                    console.log("error: ", err);
+                    return;
+                }
+                console.log("open successful");
+            });
+
+
         });   
     }
 

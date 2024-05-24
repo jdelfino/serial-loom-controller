@@ -1,6 +1,7 @@
 [Unit]
 Description=Raspberry Loom Controller
 After=network-online.target
+StopWhenUnneeded=true
 
 [Service]
 ExecStart=/home/loom/serial-loom-controller/server/start.sh

@@ -1,5 +1,5 @@
 var LoomDriver = require('./LoomDriver.js');
-const driver = new LoomDriver.LoomDriver('/dev/cu.usbmodem1301');
+const driver = new LoomDriver.LoomDriver('/dev/ttyACM0');
 
 (async () => {
 await driver.open();
