@@ -30,3 +30,34 @@ It is intended to run on Raspberry Pi Zero 2 W.
 After this, when you plug the Raspberry Pi into the Arduino, the loom motor should home itself.
 
 You should be able to load the frontend by visiting loom.local:3000 in a browser.
+
+
+# Details
+
+This project has several parts:
+1. A [React](https://react.dev/) frontend, which displays a grid of buttons. The buttons can be toggled to set a weave pattern. Rows can be sent to the loom one at a time, copy/pasted, or removed.
+1. An [Express](https://expressjs.com/) server. This serves the frontend React app as a static page, and also exposes an API with a single endpoint ([/api/setrow/](https://github.com/jdelfino/serial-loom-controller/blob/main/server/index.js#L23)), which can be used to send a row to the loom.
+1. 2 libraries for interacting with the loom via a serial port: [SerialGCodeDriver](https://github.com/jdelfino/serial-loom-controller/blob/main/server/SerialGCodeDriver.js) and [LoomDriver.js](https://github.com/jdelfino/serial-loom-controller/blob/main/server/LoomDriver.js). LoomDriver is a higher level library which exposes commands to move to a heddle and strike. SerialGCodeDriver is a lower level library that handles the 2 way serial communication with the loom (including resend handling, see [G-code](https://reprap.org/wiki/G-code#Replies_from_the_RepRap_machine_to_the_host_computer)).
+1. Linux scripts and configuration to make the server launch when the loom is connected to the USB port. All of this is controlled by [setup.sh](https://github.com/jdelfino/serial-loom-controller/blob/main/setup.sh), which:
+   * Allocates a 1GB swapfile (the 500MB RAM + 100MB default swap isn't enough)
+   * Installs node via nvm
+   * Installs the npm libraries needed to run the backend server
+   * Sets up a [`systemctl`](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units) service to run the backend server
+   * Sets up a [`udev`](https://opensource.com/article/18/11/udev) rule to start the service when something vaguely resembling the loom is connected to the USB port.
+
+# Editing the frontend
+
+The built frontend is checked into this repository (in [server/public](https://github.com/jdelfino/serial-loom-controller/tree/main/server/public). This isn't a great practice, but installing React on a Pi Zero takes a long time, and you shouldn't really be editing the frontend from the Pi.
+
+To modify the frontend:
+1. Check out this repository on your laptop or some other device.
+2. Modify the frontend, and test it (suggestion: to test in isolation, comment out the [actual fetch call](https://github.com/jdelfino/serial-loom-controller/blob/main/loomapp/src/App.js#L14) to the backend API, and replace it with a 1 second sleep)
+3. Run `npm build deploy`, which builds the app and copies it to `server/public`.
+4. Stage and commit all changes.
+5. Log onto the Pi Zero, run `git pull` from the `~/serial-loom-controller` directory, then run `sudo systemctl restart loom.service` to restart the server.
+
+# Networking
+
+The current Pi Zero is configured to have a static IP of 172.16.5.239 (configured by network administration, based on the Pi's mac address). It also broadcasts as `loom.local` on the local DNS, although this broadcast seems to be slow and flaky.
+
+You can ssh into the loom with `ssh loom@172.16.5.239` or `ssh loom@loom.local`.
