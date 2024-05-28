@@ -53,7 +53,7 @@ To modify the frontend:
 1. Check out this repository on your laptop or some other device.
 2. Modify the frontend, and test it (suggestion: to test in isolation, comment out the [actual fetch call](https://github.com/jdelfino/serial-loom-controller/blob/main/loomapp/src/App.js#L14) to the backend API, and replace it with a 1 second sleep)
 3. Run `npm build deploy`, which builds the app and copies it to `server/public`.
-4. Stage and commit all changes.
+4. Stagem, commit, and push all changes.
 5. Log onto the Pi Zero, run `git pull` from the `~/serial-loom-controller` directory, then run `sudo systemctl restart loom.service` to restart the server.
 
 # Networking
