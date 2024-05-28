@@ -21,11 +21,7 @@ function App() {
   function send(i) {
     (async () => {
       setSendState("sending");
-      console.log("sending ", i);
-      await new Promise(r => setTimeout(r, 1000));
-      setSendState("sent");
 
-      /*
       fetch('/api/setrow', {
           method: 'POST',
           headers: {
@@ -40,7 +36,6 @@ function App() {
           console.log("got response", data);
           setSendState("sent");
         });
-        */
     })();
   }
 
