@@ -58,6 +58,6 @@ To modify the frontend:
 
 # Networking
 
-The current Pi Zero is configured to have a static IP of 172.16.5.239 (configured by network administration, based on the Pi's mac address). It also broadcasts as `loom.local` on the local DNS, although this broadcast seems to be slow and flaky.
+The current Pi Zero is configured to have a static IP of 10.1.29.204 (configured by network administration, based on the Pi's mac address). It also broadcasts as `loom.local` on the local DNS, although this broadcast seems to be slow and flaky.
 
-You can ssh into the loom with `ssh loom@172.16.5.239` or `ssh loom@loom.local`.
+You can ssh into the loom with `ssh loom@10.1.29.204` or `ssh loom@loom.local`.
